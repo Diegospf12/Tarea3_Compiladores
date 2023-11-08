@@ -79,12 +79,20 @@ int ImpInterpreter::visit(WhileStatement* s) {
  return 0;
 }
 
-int ImpInterpreter::visit(ForStatement* s) { //FALTA IMPLEMENTAR
+int ImpInterpreter::visit(ForStatement* s) {
   int v1 = s->e->accept(this);
   int v2 = s->e2->accept(this);
-  for (int i = v1; i <= v2; i++) {
-    env.update(s->id, i);
-    s->body->accept(this);
+  if (v2 < v1){
+    for (int i = v1; i >= v2; i--) {
+      env.update(s->id, i);
+      s->body->accept(this);
+    }
+  }
+  else{
+    for (int i = v1; i <= v2; i++) {
+      env.update(s->id, i);
+      s->body->accept(this);
+    }
   }
   return 0;
 }
