@@ -1,0 +1,2 @@
+var int x;
+for x : 10, 5 do print(x) endfor

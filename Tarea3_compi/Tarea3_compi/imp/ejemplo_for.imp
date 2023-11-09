@@ -1,0 +1,4 @@
+var int x, y;
+y = 5;
+for x : 1, 10 do print(x) endfor;
+for x : y, y+10 do print(y); y = y+1 endfor
